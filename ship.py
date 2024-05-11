@@ -2,16 +2,30 @@ from enum import Enum
 
 
 class ShipType(Enum):
-    type1 = "a"
-    type2 = "b"
-    type3 = "c"
+    fishing = "peche"
+    transportation = "transport"
+    tourist = "tourist"
 
+class Propulsion(Enum):
+    gas = "gas"
+    elect = "electrique"
+    
 
 class Ship:
     @staticmethod
     def getTypes():
         return [
-            ShipType.type1.name,
-            ShipType.type2.name,
-            ShipType.type3.name,
+            ShipType.fishing.value,
+            ShipType.transportation.value,
+            ShipType.tourist.value,
         ]
+    
+    @staticmethod
+    def getPropultion():
+        return [
+        Propulsion.gas.value,
+        Propulsion.elect.value,
+        ]
+    
+
+
