@@ -30,7 +30,7 @@ def main():
     """HEADER"""
 
     # header text
-    img = Image.open("republic_of_algeria_image.jpg")
+    img = Image.open("assets/republic_of_algeria_image.jpg")
     resized_image = img.resize((650, 80))
     new_image = ImageTk.PhotoImage(resized_image)
     panel = tk.Label(header, image=new_image)
@@ -179,8 +179,8 @@ def main():
                 index1="0.0",
                 index2=tk.END,
             ),
-            propultion= propultion_type_dropdown_var.get(),
-            initial_date= initiale_date_cal.get_date(),
+            propultion=propultion_type_dropdown_var.get(),
+            initial_date=initiale_date_cal.get_date(),
         ),
     )
     generate_button.grid(row=5, column=3)
@@ -193,5 +193,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
