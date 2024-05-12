@@ -2,6 +2,7 @@ import mysql.connector
 import random
 import string
 from tkinter import messagebox
+from qrcode import QRCode 
 
 
 class DatabaseService:
@@ -52,6 +53,15 @@ class DatabaseService:
             and len(charge) > 1
             and len(propultion) > 1
         )
+    
+    @staticmethod
+    def _make_qr(ship_id):
+        qr = QRCode(version=1,box_size=3.5,border=2)
+        qr.add_data(ship_id)
+        qr.make_image(fit=True)
+        img=qr.make_image(fill_color="black",back_color="white")
+        name= f"{ship_id}.png"
+        img.save(f"qr_codes/{name}")
 
     def register_ship(
         self,
@@ -87,4 +97,5 @@ class DatabaseService:
         )
         self.cursor.execute(command, values)
         self.db.commit()
+        self._make_qr(ship_id)
         print("Successful")
