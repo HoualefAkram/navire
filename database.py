@@ -1,6 +1,7 @@
 import mysql.connector
 import random
 import string
+from tkinter import messagebox
 
 
 class DatabaseService:
@@ -34,6 +35,24 @@ class DatabaseService:
         random_id = "".join(random.choice(characters) for _ in range(length))
         return random_id
 
+    @staticmethod
+    def _isAllowed(
+        owner,
+        ship_type,
+        height,
+        width,
+        charge,
+        propultion,
+    ) -> bool:
+        return (
+            len(owner) > 1
+            and len(ship_type) > 1
+            and len(height) > 1
+            and len(width) > 1
+            and len(charge) > 1
+            and len(propultion) > 1
+        )
+
     def register_ship(
         self,
         owner,
@@ -44,9 +63,20 @@ class DatabaseService:
         propultion,
         initial_date,
     ):
+        if not self._isAllowed(
+            owner,
+            ship_type,
+            height,
+            width,
+            charge,
+            propultion,
+        ):
+           messagebox.showwarning('Error', 'Invalid input!')
+           return;
+        ship_id: str = self._generate_random_id()
         command = "INSERT INTO ships (id, owner, type, height, width, charge ,propultion, initial_date) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)"
         values = (
-            self._generate_random_id(),
+            ship_id,
             owner,
             ship_type,
             height,
