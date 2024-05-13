@@ -73,7 +73,7 @@ def main():
     # --------------- Geometry --------------- #
     # geometry height text
     geometry_height: tk.Label = tk.Label(
-        master=body, font=("Arial", 15), text="Longeure", background="white"
+        master=body, font=("Arial", 15), text="Longeur", background="white"
     )
     geometry_height.grid(row=2, column=1)
     # geometry height text field
@@ -87,7 +87,7 @@ def main():
     geometry_height_text_field.grid(row=2, column=2)
     # geometry width text
     geometry_width: tk.Label = tk.Label(
-        master=body, font=("Arial", 15), text="Largeure", background="white"
+        master=body, font=("Arial", 15), text="Largeur", background="white"
     )
     geometry_width.grid(row=2, column=3)
     # geometry width text field
